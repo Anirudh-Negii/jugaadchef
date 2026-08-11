@@ -22,7 +22,7 @@ const Header = () => {
               </Button>
             </SignInButton>
             <SignUpButton mode="modal">
-              <Button variant="primary" className="rounded-full px-6">
+              <Button variant="primary" className="rounded-full px-6 cursor-pointer">
                 Get Started
               </Button>
             </SignUpButton>
