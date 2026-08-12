@@ -16,14 +16,26 @@ const Header = async () => {
     <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-blur:bg-stone50/60">
       <nav className="container mx-auto px-4 h-16 flex items-center justify-between ">
         <Link href={user ? "/dashboard" : "/"}>
-          <Image src="/logo.png" alt="Jugaad Chef Logo" width={120} height={48} className="w-30 h-auto" />
+          <Image
+            src="/logo.png"
+            alt="Logo"
+            width={120}
+            height={48}
+            className="w-30 h-auto"
+          />
         </Link>
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
-          <Link href="/recipes" className="hover:text-orange-600 transition-colors flex gap-1.5 items-center" >
+          <Link
+            href="/recipes"
+            className="hover:text-orange-600 transition-colors flex gap-1.5 items-center"
+          >
             <Cookie className="w-4 h-4" />
             My Recipes
           </Link>
-          <Link href="/pantry" className="hover:text-orange-600 transition-colors flex gap-1.5 items-center" >
+          <Link
+            href="/pantry"
+            className="hover:text-orange-600 transition-colors flex gap-1.5 items-center"
+          >
             <Refrigerator className="w-4 h-4" />
             My Pantry
           </Link>
@@ -31,6 +43,29 @@ const Header = async () => {
         <div className="flex items-center space-x-4">
           <Show when="signed-in">
             {/* Implement how to cook button */}
+            {user && (
+              <PricingModal subscriptionTier={user.subscriptionTier}>
+                <Badge
+                  variant="outline"
+                  className={`flex h-8 px-3 gap-1.5 rounded-full text-xs font-semibold transition-all ${
+                    user.subscriptionTier === "pro"
+                      ? "bg-linear-to-r from-orange-600 to-amber-500 text-white border-none shadow-sm"
+                      : "bg-stone-200/50 text-stone-600 border-stone-200 cursor-pointer hover:bg-stone-300/50 hover:border-stone-300"
+                  } `}
+                >
+                  <Sparkles
+                    className={`h-3 w-3 4 ${
+                      user.subscriptionTier === "pro"
+                        ? "text-white fill-white/20"
+                        : "text-stone-500"
+                    }`}
+                  />
+                  <span>
+                    {user.subscriptionTier === "pro" ? "Pro Chef" : "Free Plan"}
+                  </span>
+                </Badge>
+              </PricingModal>
+            )}
             <UserDropdown />
           </Show>
           <Show when="signed-out">
