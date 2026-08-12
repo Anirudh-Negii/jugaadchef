@@ -5,6 +5,8 @@ import { ArrowRight, Clock, Flame, Star, Users } from "lucide-react";
 import Link from "next/link";
 import { Card, CardContent } from "@/components/ui/card";
 import Image from "next/image";
+import { FEATURES, HOW_IT_WORKS_STEPS, SITE_STATS } from "@/lib/data";
+import PricingSection from "@/components/PricingSection";
 
 export default async function Home() {
   const { has } = await auth();
@@ -97,14 +99,102 @@ export default async function Home() {
                       25min
                     </span>
                     <span className="flex items-center gap-1">
-                      <Users className="w-3 h-3" />
-                      2 Servings
+                      <Users className="w-3 h-3" />2 Servings
                     </span>
                   </div>
                 </CardContent>
               </Card>
             </Card>
           </div>
+        </div>
+      </section>
+
+      <section className="py-12 border-y-2 border-stone-900 bg-stone-900">
+        <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center px-4">
+          {SITE_STATS.map((stat, index) => (
+            <div key={index}>
+              <div className="text-4xl font-bold mb-1 text-stone-50">{stat.val}</div>
+              <Badge
+                variant="secondary"
+                className="bg-transparent text-orange-500 text-sm uppercase tracking-wider font-medium border-none"
+              >
+                {stat.label}
+              </Badge>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="py-24 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16">
+            <h2 className="text-5xl md:text-6xl font-bold mb-4">Your Smart Kitchen</h2>
+            <p className="text-stone-600 text-xl font-light">Everything you need to master your meal prep.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {FEATURES.map((feature, index) => {
+              const IconComponent = feature.icon;
+              return (
+                <Card
+                  key={index}
+                  className="border-2 border-stone-200 bg-white hover:border-orange-600 hover:shadow-lg transition-all cursor-pointer group py-0 "
+                >
+                  <CardContent className={"p-8"}>
+                    <div className="flex justify-between items-start mb-6">
+                      <div className="border-2 border-stone-200 bg-orange-50 p-3 group-hover:border-orange-600 group-hover:bg-orange-100 transition-colors">
+                        <IconComponent className="w-6 h-6" />
+                      </div>
+                      <Badge
+                        variant="secondary"
+                        className="text-xs font-mono bg-stone-100 text-stone-600 uppercase tracking-wide border border-stone-200"
+                      >
+                        {feature.limit}
+                      </Badge>
+                    </div>
+                    <h3 className="text-2xl font-bold mb-3">{feature.title}</h3>
+                    <p className="text-stone-600 text-lg font-light">{feature.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-4 border-y-2 border-stone-200 bg-stone-900 text-stone-50">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="text-5xl md:text-6xl font-bold mb-16">Cook in 3 Steps</h2>
+          <div className="space-y-12">
+            {HOW_IT_WORKS_STEPS.map((item, index) => {
+              return (
+                <div key={index}>
+                  <div className="flex gap-6 items-start">
+                    <Badge
+                      variant="outline"
+                      className="text-6xl font-bold text-orange-500 border-none bg-transparent p-0 h-auto"
+                    >
+                      {item.step}
+                    </Badge>
+
+                    <div>
+                      <h3 className="text-2xl font-bold mb-3">{item.title}</h3>
+                      <p className="text-lg text-stone-400 font-light">{item.desc}</p>
+                    </div>
+                  </div>
+                  {index < HOW_IT_WORKS_STEPS.length - 1 && (
+                    <hr className="border-stone-700 my-8" />
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 px-4">
+        <div className="max-w-5xl mx-auto">
+          <PricingSection />
         </div>
       </section>
     </div>
