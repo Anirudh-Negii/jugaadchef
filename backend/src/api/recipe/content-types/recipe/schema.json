@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "recipes",
+  "info": {
+    "singularName": "recipe",
+    "pluralName": "recipes",
+    "displayName": "Recipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks"
+    },
+    "cuisine": {
+      "type": "enumeration",
+      "enum": [
+        "italian",
+        "chinese",
+        "mexican",
+        "indian",
+        "american",
+        "thai",
+        "japanese",
+        "mediterranean",
+        "french",
+        "korean",
+        "vietnamese",
+        "spanish",
+        "greek",
+        "turkish",
+        "moroccan",
+        "brazilian",
+        "caribbean",
+        "middle - eastern",
+        "british",
+        "german",
+        "portuguese",
+        "other"
+      ]
+    },
+    "category": {
+      "type": "enumeration",
+      "enum": [
+        "breakfast",
+        "lunch",
+        "dinner",
+        "snack",
+        "dessert"
+      ]
+    },
+    "ingredients": {
+      "type": "json",
+      "required": true
+    },
+    "instructions": {
+      "type": "json",
+      "required": true
+    },
+    "imageUrl": {
+      "type": "string"
+    },
+    "isPublic": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "recipes"
+    },
+    "prepTime": {
+      "type": "integer"
+    },
+    "cookTime": {
+      "type": "integer"
+    },
+    "servings": {
+      "type": "integer"
+    },
+    "nutrition": {
+      "type": "json"
+    },
+    "tips": {
+      "type": "json"
+    },
+    "substitutions": {
+      "type": "json"
+    },
+    "saved_recipes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::saved-recipe.saved-recipe",
+      "mappedBy": "recipe"
+    }
+  }
+}

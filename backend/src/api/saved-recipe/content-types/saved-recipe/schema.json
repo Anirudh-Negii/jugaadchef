@@ -1,0 +1,30 @@
+{
+  "kind": "collectionType",
+  "collectionName": "saved_recipes",
+  "info": {
+    "singularName": "saved-recipe",
+    "pluralName": "saved-recipes",
+    "displayName": "Saved Recipe"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "savedAt": {
+      "type": "datetime"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "saved_recipes"
+    },
+    "recipe": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::recipe.recipe",
+      "inversedBy": "saved_recipes"
+    }
+  }
+}
