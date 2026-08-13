@@ -4,19 +4,17 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import RecipeCard from "./RecipeCard";
 
-const RecipeGrid = ({ type, value, fetchAction, backlink = "/dashboard" }) => {
+const RecipeGrid = ({ type, value, displayName , fetchAction, backlink = "/dashboard" }) => {
   const { data, loading, fn: fetchMeals } = useFetch(fetchAction);
 
   // Fetch meals when the value changes
   useEffect(() => {
     if (value) {
-      const formattedValue = value.charAt(0).toUpperCase() + value.slice(1);
-      fetchMeals(formattedValue);
+      fetchMeals(value);
     }
   }, [value]);
 
   const meals = data?.meals || [];
-  const displayName = value?.replace(/-/g, " ") || "";
 
   return (
     <div className="min-h-screen bg-stone-50 pt-20 pb-16 px-4">

@@ -121,3 +121,375 @@ export function getCountryFlag(country) {
 
   return emojiMap[country] ?? "🌍";
 }
+
+export const cuisineAliases = {
+  // American
+  american: {
+    api: "United States",
+    display: "American",
+  },
+  "united-states": {
+    api: "United States",
+    display: "American",
+  },
+
+  // British
+  british: {
+    api: "United Kingdom",
+    display: "British",
+  },
+  "united-kingdom": {
+    api: "United Kingdom",
+    display: "British",
+  },
+
+  // Canadian
+  canadian: {
+    api: "Canada",
+    display: "Canadian",
+  },
+  canada: {
+    api: "Canada",
+    display: "Canadian",
+  },
+
+  // Chinese
+  chinese: {
+    api: "China",
+    display: "Chinese",
+  },
+  china: {
+    api: "China",
+    display: "Chinese",
+  },
+
+  // Croatian
+  croatian: {
+    api: "Croatia",
+    display: "Croatian",
+  },
+  croatia: {
+    api: "Croatia",
+    display: "Croatian",
+  },
+
+  // Dutch
+  dutch: {
+    api: "Netherlands",
+    display: "Dutch",
+  },
+  netherlands: {
+    api: "Netherlands",
+    display: "Dutch",
+  },
+
+  // Egyptian
+  egyptian: {
+    api: "Egypt",
+    display: "Egyptian",
+  },
+  egypt: {
+    api: "Egypt",
+    display: "Egyptian",
+  },
+
+  // Filipino
+  filipino: {
+    api: "Philippines",
+    display: "Filipino",
+  },
+  philippines: {
+    api: "Philippines",
+    display: "Filipino",
+  },
+
+  // French
+  french: {
+    api: "France",
+    display: "French",
+  },
+  france: {
+    api: "France",
+    display: "French",
+  },
+
+  // Greek
+  greek: {
+    api: "Greece",
+    display: "Greek",
+  },
+  greece: {
+    api: "Greece",
+    display: "Greek",
+  },
+
+  // Indian
+  indian: {
+    api: "India",
+    display: "Indian",
+  },
+  india: {
+    api: "India",
+    display: "Indian",
+  },
+
+  // Irish
+  irish: {
+    api: "Ireland",
+    display: "Irish",
+  },
+  ireland: {
+    api: "Ireland",
+    display: "Irish",
+  },
+
+  // Italian
+  italian: {
+    api: "Italy",
+    display: "Italian",
+  },
+  italy: {
+    api: "Italy",
+    display: "Italian",
+  },
+
+  // Jamaican
+  jamaican: {
+    api: "Jamaica",
+    display: "Jamaican",
+  },
+  jamaica: {
+    api: "Jamaica",
+    display: "Jamaican",
+  },
+
+  // Japanese
+  japanese: {
+    api: "Japan",
+    display: "Japanese",
+  },
+  japan: {
+    api: "Japan",
+    display: "Japanese",
+  },
+
+  // Kenyan
+  kenyan: {
+    api: "Kenya",
+    display: "Kenyan",
+  },
+  kenya: {
+    api: "Kenya",
+    display: "Kenyan",
+  },
+
+  // Malaysian
+  malaysian: {
+    api: "Malaysia",
+    display: "Malaysian",
+  },
+  malaysia: {
+    api: "Malaysia",
+    display: "Malaysian",
+  },
+
+  // Mexican
+  mexican: {
+    api: "Mexico",
+    display: "Mexican",
+  },
+  mexico: {
+    api: "Mexico",
+    display: "Mexican",
+  },
+
+  // Moroccan
+  moroccan: {
+    api: "Morocco",
+    display: "Moroccan",
+  },
+  morocco: {
+    api: "Morocco",
+    display: "Moroccan",
+  },
+
+  // Polish
+  polish: {
+    api: "Poland",
+    display: "Polish",
+  },
+  poland: {
+    api: "Poland",
+    display: "Polish",
+  },
+
+  // Portuguese
+  portuguese: {
+    api: "Portugal",
+    display: "Portuguese",
+  },
+  portugal: {
+    api: "Portugal",
+    display: "Portuguese",
+  },
+
+  // Russian
+  russian: {
+    api: "Russia",
+    display: "Russian",
+  },
+  russia: {
+    api: "Russia",
+    display: "Russian",
+  },
+
+  // Spanish
+  spanish: {
+    api: "Spain",
+    display: "Spanish",
+  },
+  spain: {
+    api: "Spain",
+    display: "Spanish",
+  },
+
+  // Thai
+  thai: {
+    api: "Thailand",
+    display: "Thai",
+  },
+  thailand: {
+    api: "Thailand",
+    display: "Thai",
+  },
+
+  // Tunisian
+  tunisian: {
+    api: "Tunisia",
+    display: "Tunisian",
+  },
+  tunisia: {
+    api: "Tunisia",
+    display: "Tunisian",
+  },
+
+  // Turkish
+  turkish: {
+    api: "Turkey",
+    display: "Turkish",
+  },
+  turkey: {
+    api: "Turkey",
+    display: "Turkish",
+  },
+
+  // Ukrainian
+  ukrainian: {
+    api: "Ukraine",
+    display: "Ukrainian",
+  },
+  ukraine: {
+    api: "Ukraine",
+    display: "Ukrainian",
+  },
+
+  // Vietnamese
+  vietnamese: {
+    api: "Vietnam",
+    display: "Vietnamese",
+  },
+  vietnam: {
+    api: "Vietnam",
+    display: "Vietnamese",
+  },
+
+  // Algerian
+  algerian: {
+    api: "Algeria",
+    display: "Algerian",
+  },
+  algeria: {
+    api: "Algeria",
+    display: "Algerian",
+  },
+
+  // Argentine
+  argentine: {
+    api: "Argentina",
+    display: "Argentine",
+  },
+  argentina: {
+    api: "Argentina",
+    display: "Argentine",
+  },
+
+  // Australian
+  australian: {
+    api: "Australia",
+    display: "Australian",
+  },
+  australia: {
+    api: "Australia",
+    display: "Australian",
+  },
+
+  // Norwegian
+  norwegian: {
+    api: "Norway",
+    display: "Norwegian",
+  },
+  norway: {
+    api: "Norway",
+    display: "Norwegian",
+  },
+
+  // Slovak
+  slovak: {
+    api: "Slovakia",
+    display: "Slovak",
+  },
+  slovakia: {
+    api: "Slovakia",
+    display: "Slovak",
+  },
+
+  // Syrian
+  syrian: {
+    api: "Syria",
+    display: "Syrian",
+  },
+  syria: {
+    api: "Syria",
+    display: "Syrian",
+  },
+
+  // Uruguayan
+  uruguayan: {
+    api: "Uruguay",
+    display: "Uruguayan",
+  },
+  uruguay: {
+    api: "Uruguay",
+    display: "Uruguayan",
+  },
+
+  // Venezuelan
+  venezuelan: {
+    api: "Venezuela",
+    display: "Venezuelan",
+  },
+  venezuela: {
+    api: "Venezuela",
+    display: "Venezuelan",
+  },
+
+  // Saudi Arabian
+  "saudi-arabian": {
+    api: "Saudi Arabia",
+    display: "Saudi Arabian",
+  },
+  "saudi-arabia": {
+    api: "Saudi Arabia",
+    display: "Saudi Arabian",
+  },
+};

@@ -112,7 +112,7 @@ const DashboardPage = async () => {
               .map((area) => (
                 <Link
                   key={area.strArea}
-                  href={`/recipes/area/${area.strArea.toLowerCase().replace(/\s+/g, "-")}`}
+                  href={`/recipes/cuisine/${area.strArea.toLowerCase().replace(/\s+/g, "-")}`}
                 >
                   <div className="h-28 bg-white p-6 border-2 border-stone-200 hover:border-orange-600 hover:shadow-lg transition-all text-center group cursor-pointer flex flex-col items-center justify-center">
                     <div className="text-4xl mb-3">

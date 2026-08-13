@@ -38,6 +38,7 @@ const RecipeCard = ({ recipe, variant = "default" }) => {
 
   const data = getRecipeData();
 
+  // Grid variant — used for MealDB recipes in category/cuisine recipe listings
   if (variant === "grid") {
     return (
       <Link href={data.href} className="block h-full">
@@ -72,6 +73,7 @@ const RecipeCard = ({ recipe, variant = "default" }) => {
     );
   }
 
+  // Pantry variant — used for AI/pantry-based recipe recommendations
   if (variant === "pantry") {
     return (
       <Card>
