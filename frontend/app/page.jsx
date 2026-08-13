@@ -43,7 +43,7 @@ export default async function Home() {
                 <Button
                   size="xl"
                   variant="primary"
-                  className="px-8 py-6 text-lg rounded-full"
+                  className="px-8 py-6 text-lg rounded-full cursor-pointer"
                 >
                   Start Cooking Free <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
