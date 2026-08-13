@@ -42,3 +42,6 @@ next-env.d.ts
 
 # Personal development notes
 notes/
+
+# Test file
+test.js
