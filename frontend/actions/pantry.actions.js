@@ -103,7 +103,7 @@ export async function scanPantryImage(formData) {
     return {
       success: true,
       ingredients: ingredients.slice(0, 20),
-      scanLimit: isPro ? "unlimited" : 10,
+      scansLimit: isPro ? "unlimited" : 10,
       message: `Found ${ingredients.length} ingredients.`,
     };
   } catch (error) {
