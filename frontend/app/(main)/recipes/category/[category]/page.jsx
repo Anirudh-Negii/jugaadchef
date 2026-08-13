@@ -12,6 +12,7 @@ export default function CategoryRecipesPage() {
     <RecipeGrid
       type="category"
       value={category}
+      displayName={category}
       fetchAction={getMealsByCategory}
       backlink="/dashboard"
     />
