@@ -138,7 +138,7 @@ export default async function Home() {
               return (
                 <Card
                   key={index}
-                  className="border-2 border-stone-200 bg-white hover:border-orange-600 hover:shadow-lg transition-all cursor-pointer group py-0 "
+                  className="border-2 border-stone-200 bg-white hover:border-orange-600 hover:shadow-lg transition-all group py-0 "
                 >
                   <CardContent className={"p-8"}>
                     <div className="flex justify-between items-start mb-6">

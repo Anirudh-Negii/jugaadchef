@@ -17,7 +17,7 @@ export const freePantryScan = aj.withRule(
 );
 
 // Free meal recommendation limit (5 recommendations per month)
-export const freeMealRecommendation = aj.withRule(
+export const freeMealRecommendations = aj.withRule(
   tokenBucket({
     mode: "LIVE",
     characteristics: ["userId"],
