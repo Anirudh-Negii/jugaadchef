@@ -8,6 +8,7 @@ import useFetch from "@/hooks/use-fetch";
 import { addPantryItemsManually, saveToPantry, scanPantryImage } from "@/actions/pantry.actions";
 import { Button } from "./ui/button";
 import { toast } from "sonner";
+import ImageUploader from "./ImageUploader";
 
 const AddToPantryModal = ({ isOpen, onClose, onSuccess }) => {
   const [activeTab, setActiveTab] = useState("scan");
@@ -53,6 +54,12 @@ const AddToPantryModal = ({ isOpen, onClose, onSuccess }) => {
     onClose();
   };
 
+  // Handle image selection
+  const handleImageSelect = (file) => {
+    setSelectedImage(file);
+    setScannedIngredients([]);
+  };
+
   const handleAddManual = async (e) => {
     e.preventDefault();
     if (!manualItem.name.trim() || !manualItem.quantity.trim()) {
@@ -70,7 +77,7 @@ const AddToPantryModal = ({ isOpen, onClose, onSuccess }) => {
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto rounded-none">
         <DialogHeader>
-          <DialogTitle className='text-2xl font-bold tracking-light'>Add to Pantry</DialogTitle>
+          <DialogTitle className="text-2xl font-bold tracking-light">Add to Pantry</DialogTitle>
           <DialogDescription>
             Scan your pantry items with AI or add them manually to keep track of your ingredients.
           </DialogDescription>
@@ -86,7 +93,16 @@ const AddToPantryModal = ({ isOpen, onClose, onSuccess }) => {
             </TabsTrigger>
           </TabsList>
           <TabsContent value="scan" className="space-y-6 mt-6 ">
-            AI Scan
+            {scannedIngredients.length === 0 ? (
+              <div>
+                <ImageUploader
+                  onImageSelect={handleImageSelect}
+                  loading={scanning}
+                />
+              </div>
+            ) : (
+              <div></div>
+            )}
           </TabsContent>
           <TabsContent value="manual" className="mt-6 ">
             <form onSubmit={handleAddManual} className="space-y-4">
