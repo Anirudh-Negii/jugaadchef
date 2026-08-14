@@ -8,8 +8,7 @@ import { GoogleGenAI } from "@google/genai";
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
-
-const genAI = new GoogleGenAI(GEMINI_API_KEY);
+const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
 export async function scanPantryImage(formData) {
   try {
@@ -24,7 +23,7 @@ export async function scanPantryImage(formData) {
     const arcjetClient = isPro ? proTierLimit : freePantryScan;
 
     const req = await request();
-    const decision = await arcjetClient(req, {
+    const decision = await arcjetClient.protect(req, {
       userId: user.clerkId,
       requested: 1, // Requesting 1 token for the pantry scan
     });
@@ -46,10 +45,6 @@ export async function scanPantryImage(formData) {
     const buffer = Buffer.from(bytes);
     const base64Image = buffer.toString("base64");
 
-    const model = genAI.getGenerativeModel({
-      model: "gemini-3.6-flash",
-    });
-
     const prompt = `
       You are a professional chef and ingredient recognition expert. Analyze this image of a pantry/fridge and identify all visible food ingredients.
       Return ONLY a valid JSON array with this exact structure (no markdown, no explanations):
@@ -70,18 +65,22 @@ export async function scanPantryImage(formData) {
         - Common pantry staples are acceptable (salt, pepper, oil)
     `;
 
-    const result = await model.generateContent([
-      prompt,
-      {
-        inlineData: {
+    const result = await genAI.models.generateContent({
+      model: "gemini-3.6-flash",
+      contents: [
+        prompt,
+        {
+          inlineData: {
           mimeType: imageFile.type,
           data: base64Image,
+          },
         },
-      },
-    ]);
+      ],
+    });
 
-    const response = await result.response;
-    const text = response.text();
+    const text = result.text;
+
+    console.log("Gemini raw response:", text);
 
     let ingredients;
     try {

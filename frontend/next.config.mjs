@@ -1,8 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   experimental: {
-    serverComponentsHmrCache: false, // defaults to true
+    serverComponentsHmrCache: false,
+    serverActions: {
+      bodySizeLimit: "10mb",
+    },
   },
+
   images: {
     remotePatterns: [
       {

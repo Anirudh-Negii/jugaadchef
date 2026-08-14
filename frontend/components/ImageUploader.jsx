@@ -1,9 +1,11 @@
 "use client";
 
-import { Camera, ImageIcon, Upload } from "lucide-react";
+import { Camera, ImageIcon, Upload, X } from "lucide-react";
 import React, { useCallback, useRef, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import { Button } from "./ui/button";
+import Image from "next/image";
+import { RingLoader } from "react-spinners";
 
 export default function ImageUploader({ onImageSelect, loading }) {
   const [preview, setPreview] = useState(null);
@@ -42,8 +44,39 @@ export default function ImageUploader({ onImageSelect, loading }) {
     }
   };
 
+  const clearImage = () => {
+    setPreview(null);
+    onImageSelect(null);
+    if (fileInputRef.current) {
+      fileInputRef.current.value = "";
+    }
+  };
+
   if (preview) {
-    return <div className=""></div>;
+    return (
+      <div className="relative  w-full aspect-video bg-stone-100 rounded-2xl overflow-hidden border-2 border-stone-200">
+        <Image
+          src={preview}
+          alt="Pantry Preview"
+          fill
+          className="object-cover"
+        />
+
+        {!loading && (
+          <button
+            onClick={clearImage}
+            className="absolute top-4 right-4 bg-white/90 hover:bg-white p-2 rounded-full shadow-lg transition-all"
+          >
+            <X className="w-5 h-5 text-stone-700" />
+          </button>
+        )}
+        {loading && (
+          <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <RingLoader color="white" />
+          </div>
+        )}
+      </div>
+    );
   }
 
   return (
@@ -98,10 +131,10 @@ export default function ImageUploader({ onImageSelect, loading }) {
 
               <Button
                 type="button"
-                variant='outline'
+                variant="outline"
                 onClick={(e) => {
-                    e.stopPropagation();
-                    open();
+                  e.stopPropagation();
+                  open();
                 }}
                 className="border-orange-200 text-orange-700 hover:bg-orange-50 gap-2"
               >
