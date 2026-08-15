@@ -132,3 +132,21 @@
 button{
   cursor: pointer;
 }
+
+@keyframes slow-fill {
+  0% {
+    width: 0%;
+  }
+
+  70% {
+    width: 85%;
+  }
+
+  100% {
+    width: 95%;
+  }
+}
+
+.animate-slow-fill {
+  animation: slow-fill 10s ease-out forwards;
+}
