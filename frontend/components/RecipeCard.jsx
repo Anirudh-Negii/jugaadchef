@@ -96,11 +96,11 @@ const RecipeCard = ({ recipe, variant = "default" }) => {
 
             {/* Match % badge */}
             {data.matchPercentage && (
-              <div className="flex- flex-col items-end gap-1">
+              <div className="flex flex-col items-end gap-1">
                 <Badge
                   className={`${
                     data.matchPercentage >= 90
-                      ? "text-green-600"
+                      ? "bg-green-600"
                       : data.matchPercentage >= 75
                         ? "bg-orange-600"
                         : "bg-stone-600"
