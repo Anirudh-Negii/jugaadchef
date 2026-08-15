@@ -116,3 +116,15 @@ export async function getRecipesByPantryIngredients() {
     throw new Error(error.message || "Failed to get recipes suggestions. ");
   }
 }
+
+// Helper functions to fetch image from Unsplash
+async function fetchRecipeImage(recipeName) {}
+
+// Generate recipe from Gemini or fetch from Strapi if it already exists
+export async function getOrGenerateRecipe(formData) {}
+
+// Save recipe to user's collection (bookmark)
+export async function saveRecipeToCollection(formData) {}
+
+// Remove recipe from user's collection (unbookmark)
+export async function removeRecipeFromCollection(formData) {}
