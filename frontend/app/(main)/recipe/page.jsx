@@ -1,9 +1,11 @@
 "use client";
 
 import { getOrGenerateRecipe, removeRecipeFromCollection, saveRecipeToCollection } from "@/actions/recipe.actions";
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import useFetch from "@/hooks/use-fetch";
-import { AlertCircle, ArrowLeft, Loader2 } from "lucide-react";
+import { AlertCircle, ArrowLeft, Bookmark, BookmarkCheck, Clock, Flame, Loader2, Users } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect, useState } from "react";
@@ -35,10 +37,42 @@ function RecipeContent() {
 
   // Remove the recipe from the user's collection
   const {
-    loading: remove,
+    loading: removing,
     data: removeData,
     fn: removeFromCollection,
   } = useFetch(removeRecipeFromCollection);
+
+  useEffect(() => {
+    if (saveData?.success) {
+      if (saveData.alreadySaved) {
+        toast.info("Recipe is already in your collection!");
+      } else {
+        setIsSaved(true);
+        toast.success("Recipe saved to your collection!");
+      }
+    }
+  }, [saveData]);
+
+  useEffect(() => {
+    if (removeData?.success) {
+      setIsSaved(false);
+      toast.success("Recipe removed from your collection!");
+    }
+  }, [removeData]);
+
+  // Handle save/remove button click
+  const handleToggleSave = async () => {
+    if (!recipeId) return;
+
+    const formData = new FormData();
+    formData.append("recipeId", recipeId);
+
+    if (isSaved) {
+      await removeFromCollection(formData);
+    } else {
+      await saveToCollection(formData);
+    }
+  };
 
   // Fetch the recipe on mount
   useEffect(() => {
@@ -140,7 +174,106 @@ function RecipeContent() {
 
   return (
     <div className="min-h-screen bg-stone-50 pt-24 pb-16">
-      <div className="container mx-auto max-w-4xl">{recipeName}</div>
+      <div className="container mx-auto max-w-4xl">
+        <div className="mb-8">
+          <Link
+            href="/dashboard"
+            className="inline-flex items-center gap-2 text-stone-600 hover:text-orange-600 transition-colors mb-6 font-medium"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Dashboard
+          </Link>
+
+          <div className="bg-white p-8 md:p-10 border-2 border-stone-200 mb-6">
+            {recipe.imageUrl && (
+              <div className="relative w-full h-72 overflow-hidden mb-7">
+                <Image
+                  src={recipe.imageUrl}
+                  alt={recipe.title}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
+                  priority
+                />
+              </div>
+            )}
+
+            <div className="flex flex-wrap gap-2 mb-4">
+              <Badge variant="outline" className="text-orange-600 border-2 border-orange-200 capitalize">
+                {recipe.cuisine}
+              </Badge>
+              <Badge variant="outline" className="text-stone-600 border-2 border-orange-200 capitalize">
+                {recipe.category}
+              </Badge>
+            </div>
+
+            <h1 className="text-4xl md:text-5xl font-bold text-stone-900 mb-4 tracking-tight">{recipe.title}</h1>
+            <p className="text-lg text-stone-600 mb-6 font-light">{recipe.description}</p>
+
+            <div className="flex flex-wrap gap-6 text-stone-600 mb-6">
+              <div className="flex items-center gap-2">
+                <Clock className="w-5 h-5 text-orange-600" />
+                <span className="font-medium">
+                  {parseInt(recipe.prepTime) + parseInt(recipe.cookTime)} mins
+                  total
+                </span>
+              </div>
+
+              <div className="flex items-center gap-2">
+                <Users className="w-5 h-5 text-orange-600" />
+                <span className="font-medium">{recipe.servings} servings</span>
+              </div>
+
+              {recipe.nutrition?.calories && (
+                <div className="flex items-center gap-2">
+                  <Flame className="w-5 h-5 text-orange-600" />
+                  <span className="font-medium">
+                    {recipe.nutrition.calories} cal/serving
+                  </span>
+                </div>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <Button
+                onClick={handleToggleSave}
+                disabled={saving || removing}
+                className={`${
+                  isSaved
+                    ? "bg-green-600 hover:bg-green-700 border-2 border-green-700"
+                    : "bg-orange-600 hover:bg-orange-700 border-2 border-orange-700"
+                } text-white gap-2 transition-all`}
+              >
+                {saving || removing ? (
+                  <>
+                    <Loader2 className="w-4 h-4 animate-spin" />
+                    {saving ? "Saving..." : "Removing..."}
+                  </>
+                ) : isSaved ? (
+                  <>
+                    <BookmarkCheck className="w-4 h-4" />
+                    Saved to Collection
+                  </>
+                ) : (
+                  <>
+                    <Bookmark className="w-4 h-4" />
+                    Save to Collection
+                  </>
+                )}
+              </Button>
+
+              {/* Add PDF Download Button later */}
+            </div>
+          </div>
+        </div>
+
+        <div className="grid lg:grid-cols-3 gap-6">
+          {/* Left Column - Ingredients & Nutrition */}
+          <div className="lg:col-span-1 space-y-6"></div>
+
+          {/* Right Column - Instructions & Tips */}
+          <div className="lg:col-span-2 space-y-6"></div>
+        </div>
+      </div>
     </div>
   );
 }

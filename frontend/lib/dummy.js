@@ -80,7 +80,7 @@ export const DUMMY_RECIPE_RESPONSE = {
     servings: 4,
 
     nutrition: {
-      calories: "420 cal",
+      calories: "420",
       protein: "32g",
       carbs: "18g",
       fat: "26g",
