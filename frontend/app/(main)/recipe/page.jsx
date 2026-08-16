@@ -4,7 +4,7 @@ import { getOrGenerateRecipe, removeRecipeFromCollection, saveRecipeToCollection
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import useFetch from "@/hooks/use-fetch";
-import { AlertCircle, ArrowLeft, Bookmark, BookmarkCheck, ChefHat, Clock, Flame, Loader2, Users } from "lucide-react";
+import { AlertCircle, ArrowLeft, Bookmark, BookmarkCheck, CheckCircle2, ChefHat, Clock, Flame, Lightbulb, Loader2, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -303,22 +303,22 @@ function RecipeContent() {
                   <h3 className="font-bold text-stone-900 mb-3 uppercase tracking-wide text-sm">Nutrition (per serving)</h3>
 
                   <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-orange-100 p-3 text-center border-2 border-orange-100">
+                    <div className="bg-stone-50 hover:bg-orange-100 p-3 text-center border-2 border-stone-100 hover:border-orange-100">
                       <div className="text-2xl font-bold text-orange-600">{recipe.nutrition.calories}</div>
                       <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Calories</div>
                     </div>
 
-                    <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
+                    <div className="bg-stone-50 hover:bg-orange-100 p-3 text-center border-2 border-stone-100 hover:border-orange-100">
                       <div className="text-2xl font-bold text-stone-900">{recipe.nutrition.protein}</div>
                       <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Protein</div>
                     </div>
 
-                    <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
+                    <div className="bg-stone-50 hover:bg-orange-100 p-3 text-center border-2 border-stone-100 hover:border-orange-100">
                       <div className="text-2xl font-bold text-stone-900">{recipe.nutrition.carbs}</div>
                       <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Carbs</div>
                     </div>
 
-                    <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
+                    <div className="bg-stone-50 hover:bg-orange-100 p-3 text-center border-2 border-stone-100 hover:border-orange-100">
                       <div className="text-2xl font-bold text-stone-900">{recipe.nutrition.fat}</div>
                       <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Fat</div>
                     </div>
@@ -329,7 +329,123 @@ function RecipeContent() {
           </div>
 
           {/* Right Column - Instructions & Tips */}
-          <div className="lg:col-span-2 space-y-6"></div>
+          <div className="lg:col-span-2 space-y-6">
+            <div className="bg-white p-8 border-2 border-stone-200">
+              <h2 className="text-2xl font-bold text-stone-900 mb-6">Step-by-Step Instructions</h2>
+
+              <div>
+                {recipe.instructions.map((step, index) => (
+                  <div
+                    key={step.step}
+                    className={`relative pl-12 pb-8 ${
+                      index !== recipe.instructions.length - 1
+                        ? "border-l-2 border-orange-300 ml-5"
+                        : "ml-5"
+                    }`}
+                  >
+                    <div className="absolute -left-5 top-0 w-10 h-10 bg-orange-600 text-white flex items-center justify-center font-bold border-2 border-orange-700">
+                      {step.step}
+                    </div>
+
+                    <div>
+                      <h3 className="font-bold text-lg text-stone-900 mb-2">{step.title}</h3>
+                      <p className="text-stone-700 font-light mb-3">{step.instruction}</p>
+
+                      {step.tip && (
+                        <div className="bg-orange-50 border-l-4 border-orange-600 p-4">
+                          <p className="text-sm text-orange-900 flex items-start gap-2">
+                            <Lightbulb className="w-4 h-4 mt-0.5 shrink-0 fill-orange-600" />
+                            <span>
+                              <strong className="font-bold">Pro Tip:</strong>{" "}
+                              {step.tip}
+                            </span>
+                          </p>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 p-6 bg-linear-to-br from-green-50 to-emerald-50 border-2 border-green-200">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-6 h-6 text-green-600 shrink-0 mt-0.5" />
+                  <div>
+                    <h3 className="font-bold text-green-900 mb-1">You&apos;re all done!</h3>
+                    <p className="text-sm text-green-800 font-light">
+                      Plate your masterpiece and enjoy your delicious{" "}{recipe.title}!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {recipe.tips && recipe.tips.length > 0 && (
+              <div className="bg-linear-to-br from-orange-50 to-amber-50 p-8 border-2 border-orange-200">
+                <h2 className="text-2xl font-bold text-stone-900 mb-4 flex items-center gap-2">
+                  <Lightbulb className="w-6 h-6 text-orange-600 fill-orange-600" />
+                  Chef&apos;s Tips & Tricks
+                  {!recipeData.isPro && (
+                    <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold">
+                      PRO
+                    </span>
+                  )}
+                </h2>
+                <ul className="space-y-3">
+                  {recipe.tips.map((tip, i) => (
+                    <li
+                      key={i}
+                      className="flex items-start gap-3 text-stone-700"
+                    >
+                      <CheckCircle2 className="w-5 h-5 text-orange-600 shrink-0 mt-0.5" />
+                      <span className="font-light">{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {recipe.substitutions && recipe.substitutions.length > 0 && (
+              <div className="bg-white p-8 border-2 border-stone-200">
+                <h2 className="text-2xl font-bold text-stone-900 mb-4 flex items-center gap-2">
+                  Ingredient Substitutions
+                  {!recipeData.isPro && (
+                    <span className="text-xs bg-orange-100 text-orange-700 px-2 py-0.5 rounded-full font-semibold">
+                      PRO
+                    </span>
+                  )}
+                </h2>
+
+                <p className="text-stone-600 mb-6 text-sm font-light">
+                  Don&apos;t have everything? Here are some alternatives you can use:
+                </p>
+
+                <div className="space-y-4">
+                  {recipe.substitutions.map((sub, i) => (
+                    <div
+                      key={i}
+                      className="border-b-2 border-stone-100 pb-4 last:border-0 last:pb-0"
+                    >
+                      <h3 className="font-bold text-stone-900 mb-2">
+                        Instead of{" "}
+                        <span className="text-orange-600">{sub.original}</span>:
+                      </h3>
+                      <div className="flex flex-wrap gap-2">
+                        {sub.alternatives.map((alt, j) => (
+                          <Badge
+                            key={j}
+                            variant="outline"
+                            className="text-stone-600 border-2 border-stone-200"
+                          >
+                            {alt}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>
