@@ -4,7 +4,7 @@ import { getOrGenerateRecipe, removeRecipeFromCollection, saveRecipeToCollection
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import useFetch from "@/hooks/use-fetch";
-import { AlertCircle, ArrowLeft, Bookmark, BookmarkCheck, Clock, Flame, Loader2, Users } from "lucide-react";
+import { AlertCircle, ArrowLeft, Bookmark, BookmarkCheck, ChefHat, Clock, Flame, Loader2, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -268,7 +268,65 @@ function RecipeContent() {
 
         <div className="grid lg:grid-cols-3 gap-6">
           {/* Left Column - Ingredients & Nutrition */}
-          <div className="lg:col-span-1 space-y-6"></div>
+          <div className="lg:col-span-1 space-y-6">
+            <div className="bg-white p-6 border-2 border-stone-200 lg:sticky lg:top-24">
+              <h2 className="text-2xl font-bold text-stone-900 mb-4 flex items-center gap-2">
+                <ChefHat className="w-6 h-6 text-orange-600" />
+                Ingredients
+              </h2>
+
+              {Object.entries(
+                recipe.ingredients.reduce((acc, ing) => {
+                  const cat = ing.category || "Other";
+                  if (!acc[cat]) acc[cat] = [];
+                  acc[cat].push(ing);
+                  return acc;
+                }, {}),
+              ).map(([category, items]) => (
+                <div key={category} className="mb-6 last:mb-0">
+                  <h3 className="text-sm font-bold text-stone-500 uppercase tracking-wide mb-3 border-b border-stone-500">{category}</h3>
+
+                  <ul className="space-y-2">
+                    {items.map((ingredient, i) => (
+                      <li key={i} className="flex justify-center items-start gap-2 text-stone-700 py-2">
+                        <span className="flex-1">{ingredient.item}</span>
+                        <span className="font-bold text-orange-600 text-sm whitespace-nowrap">{ingredient.amount}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+
+              {/* PRO FEATURE */}
+              {recipe.nutrition && (
+                <div className="mt-6 pt-6 border-t-2 border-stone-500">
+                  <h3 className="font-bold text-stone-900 mb-3 uppercase tracking-wide text-sm">Nutrition (per serving)</h3>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-orange-100 p-3 text-center border-2 border-orange-100">
+                      <div className="text-2xl font-bold text-orange-600">{recipe.nutrition.calories}</div>
+                      <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Calories</div>
+                    </div>
+
+                    <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
+                      <div className="text-2xl font-bold text-stone-900">{recipe.nutrition.protein}</div>
+                      <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Protein</div>
+                    </div>
+
+                    <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
+                      <div className="text-2xl font-bold text-stone-900">{recipe.nutrition.carbs}</div>
+                      <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Carbs</div>
+                    </div>
+
+                    <div className="bg-stone-50 p-3 text-center border-2 border-stone-100">
+                      <div className="text-2xl font-bold text-stone-900">{recipe.nutrition.fat}</div>
+                      <div className="text-xs text-stone-500 font-bold uppercase tracking-wide">Fat</div>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
 
           {/* Right Column - Instructions & Tips */}
           <div className="lg:col-span-2 space-y-6"></div>
