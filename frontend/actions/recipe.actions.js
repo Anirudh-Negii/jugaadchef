@@ -4,7 +4,7 @@ import { freeMealRecommendations, proTierLimit } from "@/lib/arcjet";
 import { checkUser } from "@/lib/checkUser";
 import { request } from "@arcjet/next";
 import { GoogleGenAI } from "@google/genai";
-import { DUMMY_RECIPE_RESPONSE } from "@/lib/dummy";
+// import { DUMMY_RECIPE_RESPONSE } from "@/lib/dummy";
 
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || "http://localhost:1337";
 const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
@@ -182,7 +182,7 @@ export async function getOrGenerateRecipe(formData) {
       throw new Error("Recipe name is required");
     }
 
-    // Normalize the recipe title to create a slug
+    // Normalize the recipe title
     const normalizedTitle = normalizeTitle(recipeName);
     const isPro = user.subscriptionTier === "pro";
 
@@ -372,6 +372,7 @@ export async function getOrGenerateRecipe(formData) {
       recipeId: createdRecipe.data.id,
       isSaved: false,
       fromDatabase: false,
+      isPro,
       recommendationLimit: isPro ? "unlimited" : 5,
       message: "Recipe generated and saved successfully.",
     };
