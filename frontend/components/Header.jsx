@@ -15,15 +15,9 @@ const Header = async () => {
 
   return (
     <header className="fixed top-0 w-full border-b border-stone-200 bg-stone-50/80 backdrop-blur-md z-50 supports-backdrop-blur:bg-stone50/60">
-      <nav className="container mx-auto px-4 h-16 flex items-center justify-between ">
-        <Link href={user ? "/dashboard" : "/"}>
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            width={250}
-            height={60}
-            className="w-30 h-auto"
-          />
+      <nav className="container mx-auto px-4 h-20 flex items-center justify-between ">
+        <Link href="/">
+          <Image src="/logo.png" alt="Logo" width={190} height={50} />
         </Link>
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium text-stone-600">
           <Link
