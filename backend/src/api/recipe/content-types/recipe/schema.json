@@ -15,9 +15,6 @@
       "type": "string",
       "required": true
     },
-    "description": {
-      "type": "blocks"
-    },
     "cuisine": {
       "type": "enumeration",
       "enum": [
@@ -100,6 +97,9 @@
       "relation": "oneToMany",
       "target": "api::saved-recipe.saved-recipe",
       "mappedBy": "recipe"
+    },
+    "description": {
+      "type": "text"
     }
   }
 }
