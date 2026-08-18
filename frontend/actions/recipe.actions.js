@@ -517,3 +517,41 @@ export async function removeRecipeFromCollection(formData) {
     throw new Error("Failed to remove recipe from collection.");
   }
 }
+
+// Get user's saved recipe
+export async function getSavedRecipe() {
+  try {
+    const user = await checkUser();
+    if (!user) {
+      throw new Error("User not authenticated");
+    }
+
+    const response = await fetch(
+      `${STRAPI_URL}/api/saved-recipes?filters[user][id][$eq]=${user.id}&populate[recipe][populate]=*&sort=savedAt:desc`,
+      {
+        headers: {
+          Authorization: `Bearer ${STRAPI_API_TOKEN}`,
+        },
+        cache: "no-store",
+      },
+    );
+
+    if (!response.ok) {
+      throw new Error("Failed to fetch saved recipes");
+    }
+
+    const data = await response.json();
+    const recipes = data.data
+      .map((savedRecipe) => savedRecipe.recipe)
+      .filter(Boolean);
+
+    return {
+      success: true,
+      recipes,
+      count: recipes.length,
+    };
+  } catch (error) {
+    console.error("Error fetching saved recipes: ", error);
+    throw new Error(error.message || "Failed to load saved recipes");
+  }
+}

@@ -33,6 +33,25 @@ const RecipeCard = ({ recipe, variant = "default" }) => {
         showImage: !!recipe.imageUrl,
       };
     }
+
+    // For Strapi recipes (saved recipes, search recipes)
+    if (recipe) {
+      return {
+        title: recipe.title,
+        description: recipe.description,
+        category: recipe.category,
+        cuisine: recipe.cuisine,
+        prepTime: recipe.prepTime,
+        cookTime: recipe.cookTime,
+        servings: recipe.servings,
+        matchPercentage: recipe.matchPercentage,
+        missingIngredients: recipe.missingIngredients,
+        image: recipe.imageUrl,
+        href: `/recipe?cook=${encodeURIComponent(recipe.title)}`,
+        showImage: !!recipe.imageUrl,
+      };
+    }
+
     return {};
   };
 
@@ -153,8 +172,8 @@ const RecipeCard = ({ recipe, variant = "default" }) => {
                 {data.missingIngredients.map((ingredient, i) => (
                   <Badge
                     key={i}
-                    varaint="outline"
-                    className="bg-white text-orange-700 border-orange"
+                    variant="outline"
+                    className="bg-white text-orange-700 border-orange-200"
                   >
                     {ingredient}
                   </Badge>
@@ -172,6 +191,81 @@ const RecipeCard = ({ recipe, variant = "default" }) => {
           </Link>
         </CardFooter>
       </Card>
+    );
+  }
+
+  if (variant === "list") {
+    return (
+      <Link href={data.href}>
+        <Card className="rounded-none border-stone-200 hover:shadow-lg hover:border-orange-200 transition-all cursor-pointer group overflow-hidden py-0">
+          <div className="flex flex-col md:flex-row">
+            {data.showImage ? (
+              <div className="relative w-full md:w-48 aspect-video md:aspect-square shrink-0">
+                <Image
+                  src={data.image}
+                  alt={data.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  sizes="(max-width: 768px) 100vw, 192px"
+                />
+              </div>
+            ) : (
+              <div className="relative w-full md:w-48 aspect-video md:aspect-square shrink-0 bg-linear-to-br from-orange-400 to-amber-400 flex items-center justify-center">
+                <ChefHat className="w-12 h-12 text-white/30" />
+              </div>
+            )}
+
+            <div className="flex-1 py-5">
+              <CardHeader>
+                <div className="flex flex-wrap gap-2 mb-2">
+                  {data.cuisine && (
+                    <Badge variant="outline" className="text-orange-600 border-orange-200 capitalize">
+                      {data.cuisine}
+                    </Badge>
+                  )}
+                  {data.category && (
+                    <Badge variant="outline" className="text-stone-600 border-orange-200 capitalize">
+                      {data.category}
+                    </Badge>
+                  )}
+                </div>
+
+                <CardTitle className="text-xl font-bold text-stone-900 group-hover:text-orange-600 transition-colors">
+                  {data.title}
+                </CardTitle>
+
+                {data.description && (
+                  <CardDescription className="line-clamp-2">
+                    {data.description}
+                  </CardDescription>
+                )}
+              </CardHeader>
+
+              {(data.prepTime || data.cookTime || data.servings) && (
+                <CardContent>
+                  <div className="flex gap-4 text-sm text-stone-500 pt-4">
+                    {(data.prepTime || data.cookTime) && (
+                      <div className="flex items-center gap-1">
+                        <Clock className="w-4 h-4" />
+                        <span>
+                          {parseInt(data.prepTime || 0) + parseInt(data.cookTime || 0)}{" "}mins
+                        </span>
+                      </div>
+                    )}
+
+                    {data.servings && (
+                      <div className="flex items-center gap-1">
+                        <Users className="w-4 h-4" />
+                        <span>{data.servings} servings</span>
+                      </div>
+                    )}
+                  </div>
+                </CardContent>
+              )}
+            </div>
+          </div>
+        </Card>
+      </Link>
     );
   }
 
