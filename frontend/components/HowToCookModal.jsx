@@ -4,7 +4,14 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChefHat, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { toast } from "sonner";
 
 export default function HowToCookModal() {
@@ -33,11 +40,9 @@ export default function HowToCookModal() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange} className="w-full ">
-      <DialogTrigger asChild>
-        <button className="hover:text-orange-600 transition-colors flex items-center gap-1.5 text-sm font-medium text-stone-600" >
-          <ChefHat className="w-4 h-4" />
-          How to Cook?
-        </button>
+      <DialogTrigger className="hover:text-orange-600 transition-colors flex items-center gap-1.5 text-sm font-medium text-stone-600">
+        <ChefHat className="w-4 h-4" />
+        How to Cook?
       </DialogTrigger>
 
       <DialogContent className="sm:max-w-lg">
