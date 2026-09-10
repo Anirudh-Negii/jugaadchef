@@ -82,7 +82,7 @@ export default function HowToCookModal() {
               💡 Try These:
             </h4>
             <div className="flex flex-wrap gap-2">
-              {["Butter Chicken", "White Sauce Pasta", "Shahi Panner"].map(
+              {["Butter Chicken", "White Sauce Pasta", "Shahi Paneer"].map(
                 (example) => (
                   <button
                     key={example}
