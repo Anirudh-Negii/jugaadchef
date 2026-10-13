@@ -9,17 +9,35 @@ import PricingModal from "@/components/PricingModal";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import RecipeCard from "@/components/RecipeCard";
+import { toast } from "sonner";
 
 const PantryRecipesPage = () => {
   const {
     loading,
     data: recipesData,
+    error,
     fn: fetchSuggestions,
-  } = useFetch(getRecipesByPantryIngredients);
+  } = useFetch(getRecipesByPantryIngredients, { showErrorToast: false });
 
   useEffect(() => {
     fetchSuggestions();
   }, []);
+
+  useEffect(() => {
+    if (!error) return;
+
+    if (error.message === "GEMINI_HIGH_DEMAND") {
+      toast.error("Recipe Generation Temporarily Unavailable", {
+        description:
+          "Gemini is experiencing high demand right now. Please try again in a moment.",
+      });
+      return;
+    }
+
+    toast.error("Recipe Generation Failed", {
+      description: "We couldn't generate recipe suggestions right now. Please try again.",
+    });
+  }, [error]);
 
   const recipes = recipesData?.recipes || [];
   const ingredientsUsed = recipesData?.ingredientsUsed || "";

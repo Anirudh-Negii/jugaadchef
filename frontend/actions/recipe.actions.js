@@ -11,6 +11,12 @@ const STRAPI_API_TOKEN = process.env.STRAPI_API_TOKEN;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 const genAI = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 const UNSPLASH_ACCESS_KEY = process.env.UNSPLASH_ACCESS_KEY;
+const GEMINI_HIGH_DEMAND_ERROR = "GEMINI_HIGH_DEMAND";
+
+function isGeminiHighDemandError(error) {
+  const status = error?.status ?? error?.statusCode ?? error?.response?.status;
+  return status === 503;
+}
 
 // Helper functions to fetch image from Unsplash
 async function fetchRecipeImage(recipeName) {
@@ -129,10 +135,18 @@ export async function getRecipesByPantryIngredients() {
     `;
 
     // Generate recipes using Google Gemini API
-    const result = await genAI.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: prompt,
-    });
+    let result;
+    try {
+      result = await genAI.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: prompt,
+      });
+    } catch (error) {
+      if (isGeminiHighDemandError(error)) {
+        throw new Error(GEMINI_HIGH_DEMAND_ERROR);
+      }
+      throw error;
+    }
 
     const text = result.text;
 
@@ -157,6 +171,9 @@ export async function getRecipesByPantryIngredients() {
     };
   } catch (error) {
     console.error("Error in generating recipe suggestions:", error);
+    if (error.message === GEMINI_HIGH_DEMAND_ERROR) {
+      throw error;
+    }
     throw new Error(error.message || "Failed to get recipes suggestions. ");
   }
 }
@@ -297,10 +314,18 @@ export async function getOrGenerateRecipe(formData) {
       - Keep total instructions under 12 steps
     `;
 
-    const result = await genAI.models.generateContent({
-      model: "gemini-3.6-flash",
-      contents: prompt,
-    });
+    let result;
+    try {
+      result = await genAI.models.generateContent({
+        model: "gemini-3.6-flash",
+        contents: prompt,
+      });
+    } catch (error) {
+      if (isGeminiHighDemandError(error)) {
+        throw new Error(GEMINI_HIGH_DEMAND_ERROR);
+      }
+      throw error;
+    }
     const text = result.text;
 
     let recipeData;
@@ -380,6 +405,9 @@ export async function getOrGenerateRecipe(formData) {
     // return DUMMY_RECIPE_RESPONSE;
   } catch (error) {
     console.error("Error in getOrGenerateRecipe:", error);
+    if (error.message === GEMINI_HIGH_DEMAND_ERROR) {
+      throw error;
+    }
     throw new Error("Failed to get or generate recipe.");
   }
 }

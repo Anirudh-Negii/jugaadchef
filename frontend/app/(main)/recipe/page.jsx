@@ -28,8 +28,9 @@ function RecipeContent() {
   const {
     loading: loadingRecipe,
     data: recipeData,
+    error: recipeError,
     fn: fetchRecipe,
-  } = useFetch(getOrGenerateRecipe);
+  } = useFetch(getOrGenerateRecipe, { showErrorToast: false });
 
   // Save the recipe to the user's collection
   const {
@@ -100,6 +101,22 @@ function RecipeContent() {
       }
     }
   }, [recipeData]);
+
+  useEffect(() => {
+    if (!recipeError) return;
+
+    if (recipeError.message === "GEMINI_HIGH_DEMAND") {
+      toast.error("Recipe Generation Temporarily Unavailable", {
+        description:
+          "Gemini is experiencing high demand right now. Please try again in a moment.",
+      });
+      return;
+    }
+
+    toast.error("Recipe Generation Failed", {
+      description: "We couldn't generate this recipe right now. Please try again.",
+    });
+  }, [recipeError]);
 
   // If no recipe name is in the URl
   if (!recipeName) {
