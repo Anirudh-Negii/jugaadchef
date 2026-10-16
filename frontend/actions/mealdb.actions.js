@@ -82,7 +82,7 @@ export async function getMealsByCategory(category) {
     const data = await response.json();
     return {
       success: true,
-      meals: data.meals || [],
+      meals: (data.meals || []).slice(0, 20),
       category,
     };
   } catch (error) {
@@ -105,7 +105,7 @@ export async function getMealsByArea(area) {
     const data = await response.json();
     return {
       success: true,
-      meals: data.meals || [],
+      meals: (data.meals || []).slice(0, 20),
       area,
     };
   } catch (error) {

@@ -1,7 +1,7 @@
 import { getAreas, getCategories, getRecipeOfTheDay } from "@/actions/mealdb.actions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getCategoryEmoji, getCountryFlag } from "@/lib/data";
+import { getCategoryEmoji, getCountryFlag, allowedCategories, allowedCuisines } from "@/lib/data";
 import { ArrowRight, Flame, Globe } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -81,21 +81,26 @@ const DashboardPage = async () => {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
-            {categories.map((category) => (
-              <Link
+            {categories
+              .filter((category) =>
+                allowedCategories.includes(category.strCategory)
+              )
+              .map((category) => (
+                <Link
                 key={category.strCategory}
                 href={`/recipes/category/${category.strCategory.toLowerCase()}`}
-              >
-                <div className="bg-white p-6 border-2 border-stone-200 hover:border-orange-600 hover:shadow-lg transition-all text-center group cursor-pointer">
-                  <div className="text-4xl mb-3">
-                    {getCategoryEmoji(category.strCategory)}
+                >
+                  <div className="bg-white p-6 border-2 border-stone-200 hover:border-orange-600 hover:shadow-lg transition-all text-center group cursor-pointer">
+                    <div className="text-4xl mb-3">
+                      {getCategoryEmoji(category.strCategory)}
+                    </div>
+                    <h3 className="font-bold text-stone-900 group-hover:text-orange-600 transition-colors text-sm">
+                      {category.strCategory}
+                    </h3>
                   </div>
-                  <h3 className="font-bold text-stone-900 group-hover:text-orange-600 transition-colors text-sm">
-                    {category.strCategory}
-                  </h3>
-                </div>
               </Link>
-            ))}
+              ))
+            }
           </div>
         </section>
 
@@ -108,7 +113,7 @@ const DashboardPage = async () => {
 
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-4">
             {areas
-              .filter((area) => getCountryFlag(area.strArea) !== "🌍")
+              .filter((area) => allowedCuisines.includes(area.strArea) && getCountryFlag(area.strArea) !== "🌍")
               .map((area) => (
                 <Link
                   key={area.strArea}

@@ -493,3 +493,38 @@ export const cuisineAliases = {
     display: "Saudi Arabian",
   },
 };
+
+export const allowedCategories = [
+  "Chicken",
+  "Goat",
+  "Miscellaneous",
+  "Side",
+  "Breakfast",
+  "Dessert",
+  "Pasta",
+  "Vegetarian",
+  "Starter",
+];
+
+export const allowedCuisines = [
+  "Chinese",
+  "French",
+  "Greek",
+  "Indian",
+  "Italian",
+  "Japanese",
+  "Mexican",
+  "Portuguese",
+  "Spanish",
+  "Thai",
+  "American",
+  "Canadian",
+  "Vietnamese",
+  "Malaysian",
+  "Russian",
+  "Australian",
+  "Filipino",
+  "Dutch",
+  "Turkish",
+  "British",
+];
