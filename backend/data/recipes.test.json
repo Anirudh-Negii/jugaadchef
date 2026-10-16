@@ -1,0 +1,587 @@
+[
+  {
+    "title": "Butter Chicken",
+    "description": "Tender chicken simmered in a creamy tomato-based sauce with butter and warming Indian spices.",
+    "cuisine": "indian",
+    "category": "dinner",
+    "ingredients": [
+      {
+        "item": "Boneless chicken thighs",
+        "amount": "700 g",
+        "category": "Meat"
+      },
+      {
+        "item": "Plain yogurt",
+        "amount": "120 g",
+        "category": "Dairy"
+      },
+      {
+        "item": "Ginger-garlic paste",
+        "amount": "2 tbsp",
+        "category": "Other"
+      },
+      {
+        "item": "Lemon juice",
+        "amount": "1 tbsp",
+        "category": "Fruit"
+      },
+      {
+        "item": "Kashmiri chili powder",
+        "amount": "1 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Garam masala",
+        "amount": "2 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Butter",
+        "amount": "3 tbsp",
+        "category": "Dairy"
+      },
+      {
+        "item": "Neutral oil",
+        "amount": "1 tbsp",
+        "category": "Other"
+      },
+      {
+        "item": "Onion",
+        "amount": "1 medium, chopped",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Tomato passata",
+        "amount": "400 g",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Cashews",
+        "amount": "30 g",
+        "category": "Other"
+      },
+      {
+        "item": "Heavy cream",
+        "amount": "120 ml",
+        "category": "Dairy"
+      },
+      {
+        "item": "Dried fenugreek leaves",
+        "amount": "1 tsp, crushed",
+        "category": "Other"
+      },
+      {
+        "item": "Salt",
+        "amount": "To taste",
+        "category": "Other"
+      },
+      {
+        "item": "Fresh coriander",
+        "amount": "2 tbsp, chopped",
+        "category": "Other"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Marinate the chicken",
+        "instruction": "Mix yogurt, ginger-garlic paste, lemon juice, chili powder, 1 tsp garam masala, and salt. Coat the chicken and marinate for at least 20 minutes.",
+        "tip": "Marinating for several hours gives the chicken more flavor."
+      },
+      {
+        "step": 2,
+        "title": "Brown the chicken",
+        "instruction": "Heat the oil in a large pan over medium-high heat. Cook the chicken in batches until browned; it does not need to be fully cooked yet. Set aside.",
+        "tip": "Cook in batches so the chicken browns instead of steaming."
+      },
+      {
+        "step": 3,
+        "title": "Make the tomato sauce",
+        "instruction": "Melt 1 tbsp butter in the pan. Cook the onion until soft, then add the tomato passata and cashews. Simmer for 10–12 minutes.",
+        "tip": "If the sauce becomes too thick, add a small splash of water."
+      },
+      {
+        "step": 4,
+        "title": "Blend and finish the sauce",
+        "instruction": "Blend the sauce until smooth, then return it to the pan. Add the remaining butter, cream, and remaining garam masala.",
+        "tip": "Blend carefully and allow the sauce to cool slightly first if using a countertop blender."
+      },
+      {
+        "step": 5,
+        "title": "Simmer and serve",
+        "instruction": "Add the chicken and its juices to the sauce. Simmer gently until the chicken is fully cooked, about 8–12 minutes. Stir in crushed fenugreek leaves and garnish with coriander.",
+        "tip": "Avoid boiling the sauce hard after adding cream."
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=600&auto=format&fit=crop&q=60",
+    "isPublic": true,
+    "prepTime": 25,
+    "cookTime": 35,
+    "servings": 4,
+    "nutrition": {
+      "fat": "28g",
+      "carbs": "18g",
+      "protein": "38g",
+      "calories": "470"
+    },
+    "tips": [
+      "Use chicken thighs for a juicier result.",
+      "Adjust chili powder to control the heat.",
+      "Serve with basmati rice or naan."
+    ],
+    "substitutions": [
+      {
+        "original": "Chicken thighs",
+        "alternatives": [
+          "Boneless chicken breast",
+          "Firm tofu"
+        ]
+      },
+      {
+        "original": "Cashews",
+        "alternatives": [
+          "Blanched almonds",
+          "Omit for a thinner sauce"
+        ]
+      },
+      {
+        "original": "Heavy cream",
+        "alternatives": [
+          "Cooking cream",
+          "Unsweetened cashew cream"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "White Sauce Pasta",
+    "description": "Creamy pasta tossed in a smooth béchamel-style white sauce with garlic, cheese, and vegetables.",
+    "cuisine": "italian",
+    "category": "dinner",
+    "ingredients": [
+      {
+        "item": "Penne pasta",
+        "amount": "300 g",
+        "category": "Grain"
+      },
+      {
+        "item": "Butter",
+        "amount": "2 tbsp",
+        "category": "Dairy"
+      },
+      {
+        "item": "All-purpose flour",
+        "amount": "2 tbsp",
+        "category": "Grain"
+      },
+      {
+        "item": "Milk",
+        "amount": "500 ml",
+        "category": "Dairy"
+      },
+      {
+        "item": "Garlic",
+        "amount": "3 cloves, minced",
+        "category": "Other"
+      },
+      {
+        "item": "Parmesan cheese",
+        "amount": "50 g, grated",
+        "category": "Dairy"
+      },
+      {
+        "item": "Mozzarella cheese",
+        "amount": "50 g, grated",
+        "category": "Dairy"
+      },
+      {
+        "item": "Olive oil",
+        "amount": "1 tbsp",
+        "category": "Other"
+      },
+      {
+        "item": "Mushrooms",
+        "amount": "150 g, sliced",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Bell pepper",
+        "amount": "1 medium, diced",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Broccoli florets",
+        "amount": "100 g",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Dried oregano",
+        "amount": "1 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Black pepper",
+        "amount": "1/2 tsp, or to taste",
+        "category": "Other"
+      },
+      {
+        "item": "Salt",
+        "amount": "To taste",
+        "category": "Other"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Cook the pasta",
+        "instruction": "Boil the pasta in salted water according to package directions until al dente. Reserve about 120 ml of pasta water, then drain.",
+        "tip": "Slightly undercook the pasta because it will finish cooking in the sauce."
+      },
+      {
+        "step": 2,
+        "title": "Cook the vegetables",
+        "instruction": "Heat olive oil in a large pan. Cook the mushrooms, bell pepper, and broccoli for 5–7 minutes until just tender. Transfer to a plate.",
+        "tip": "Keep the vegetables slightly firm for better texture."
+      },
+      {
+        "step": 3,
+        "title": "Make the white sauce",
+        "instruction": "Melt butter in the pan over medium-low heat. Add garlic and cook briefly. Stir in flour and cook for about one minute, then gradually whisk in the milk until smooth.",
+        "tip": "Add the milk gradually while whisking to help prevent lumps."
+      },
+      {
+        "step": 4,
+        "title": "Thicken and season",
+        "instruction": "Cook the sauce, stirring often, until it thickens enough to coat a spoon. Add Parmesan, mozzarella, oregano, black pepper, and salt.",
+        "tip": "Keep the heat moderate so the milk does not scorch."
+      },
+      {
+        "step": 5,
+        "title": "Combine and serve",
+        "instruction": "Add the pasta and vegetables to the sauce and toss to coat. Loosen with a little reserved pasta water if needed, then serve immediately.",
+        "tip": "The sauce thickens as it stands, so serve while hot."
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1645112411341-6c4fd023714a?w=600&auto=format&fit=crop&q=60",
+    "isPublic": true,
+    "prepTime": 15,
+    "cookTime": 25,
+    "servings": 4,
+    "nutrition": {
+      "fat": "19g",
+      "carbs": "66g",
+      "protein": "22g",
+      "calories": "520"
+    },
+    "tips": [
+      "Grate cheese fresh for a smoother sauce.",
+      "Add cooked chicken if you want extra protein.",
+      "Use reserved pasta water to adjust the sauce consistency."
+    ],
+    "substitutions": [
+      {
+        "original": "Penne pasta",
+        "alternatives": [
+          "Fusilli",
+          "Fettuccine",
+          "Gluten-free pasta"
+        ]
+      },
+      {
+        "original": "Milk",
+        "alternatives": [
+          "Lactose-free milk",
+          "Unsweetened oat milk"
+        ]
+      },
+      {
+        "original": "Parmesan cheese",
+        "alternatives": [
+          "Grana Padano",
+          "A vegetarian hard cheese"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Shahi Paneer",
+    "description": "Soft paneer cubes in a rich, mildly spiced North Indian gravy made with tomatoes, cashews, cream, and aromatic spices.",
+    "cuisine": "indian",
+    "category": "dinner",
+    "ingredients": [
+      {
+        "item": "Paneer",
+        "amount": "400 g, cubed",
+        "category": "Dairy"
+      },
+      {
+        "item": "Butter",
+        "amount": "2 tbsp",
+        "category": "Dairy"
+      },
+      {
+        "item": "Neutral oil",
+        "amount": "1 tbsp",
+        "category": "Other"
+      },
+      {
+        "item": "Onion",
+        "amount": "2 medium, sliced",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Tomatoes",
+        "amount": "3 medium, chopped",
+        "category": "Vegetable"
+      },
+      {
+        "item": "Cashews",
+        "amount": "25 g",
+        "category": "Other"
+      },
+      {
+        "item": "Ginger-garlic paste",
+        "amount": "1 tbsp",
+        "category": "Other"
+      },
+      {
+        "item": "Green cardamom pods",
+        "amount": "3",
+        "category": "Other"
+      },
+      {
+        "item": "Cumin seeds",
+        "amount": "1/2 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Ground coriander",
+        "amount": "1 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Kashmiri chili powder",
+        "amount": "1/2 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Garam masala",
+        "amount": "1/2 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Heavy cream",
+        "amount": "100 ml",
+        "category": "Dairy"
+      },
+      {
+        "item": "Water",
+        "amount": "200–300 ml, as needed",
+        "category": "Other"
+      },
+      {
+        "item": "Salt",
+        "amount": "To taste",
+        "category": "Other"
+      },
+      {
+        "item": "Fresh coriander",
+        "amount": "2 tbsp, chopped",
+        "category": "Other"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Soften the onion and tomatoes",
+        "instruction": "Heat the oil and 1 tbsp butter in a pan. Add cumin seeds and cardamom, then add the onions and cook until soft. Stir in ginger-garlic paste and cook for one minute. Add tomatoes and cashews, then simmer until everything is soft.",
+        "tip": "Keep the heat moderate to prevent the onions and spices from burning."
+      },
+      {
+        "step": 2,
+        "title": "Blend the gravy",
+        "instruction": "Remove the cardamom pods if desired. Let the mixture cool slightly, then blend until completely smooth, adding a little water if needed.",
+        "tip": "Blend in batches and follow your blender's safety instructions for hot mixtures."
+      },
+      {
+        "step": 3,
+        "title": "Cook the spices",
+        "instruction": "Return the gravy to the pan. Add ground coriander, chili powder, garam masala, salt, and enough water to reach a thick but pourable consistency. Simmer for 5–7 minutes.",
+        "tip": "Taste before adding more chili; Shahi Paneer is usually mild and aromatic."
+      },
+      {
+        "step": 4,
+        "title": "Add paneer and cream",
+        "instruction": "Stir in the paneer cubes, cream, and remaining butter. Simmer gently for 4–5 minutes until the paneer is heated through.",
+        "tip": "Avoid prolonged boiling after adding cream to keep the gravy smooth."
+      },
+      {
+        "step": 5,
+        "title": "Garnish and serve",
+        "instruction": "Taste and adjust the salt, then garnish with fresh coriander. Serve hot with naan, roti, or basmati rice.",
+        "tip": "If the gravy thickens too much, loosen it with a splash of warm water."
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&auto=format&fit=crop&q=60",
+    "isPublic": true,
+    "prepTime": 20,
+    "cookTime": 30,
+    "servings": 4,
+    "nutrition": {
+      "fat": "31g",
+      "carbs": "20g",
+      "protein": "18g",
+      "calories": "430"
+    },
+    "tips": [
+      "Use fresh, soft paneer for the best texture.",
+      "Blend the gravy thoroughly for a restaurant-style smooth finish.",
+      "For a richer flavor, lightly pan-sear the paneer before adding it to the gravy."
+    ],
+    "substitutions": [
+      {
+        "original": "Paneer",
+        "alternatives": [
+          "Firm tofu"
+        ]
+      },
+      {
+        "original": "Cashews",
+        "alternatives": [
+          "Blanched almonds",
+          "Sunflower seeds"
+        ]
+      },
+      {
+        "original": "Heavy cream",
+        "alternatives": [
+          "Cooking cream",
+          "Unsweetened cashew cream"
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Flija Layered Pancake / Crepe",
+    "description": "A traditional Albanian and Kosovo-style layered dish made from thin batter layers baked gradually and brushed with a rich butter and cream mixture. Flija has a soft, tender interior and lightly browned, rustic layers, and is traditionally served warm.",
+    "cuisine": "other",
+    "category": "lunch",
+    "ingredients": [
+      {
+        "item": "All-purpose flour",
+        "amount": "500 g",
+        "category": "Grain"
+      },
+      {
+        "item": "Water",
+        "amount": "700 ml",
+        "category": "Other"
+      },
+      {
+        "item": "Salt",
+        "amount": "1 tsp",
+        "category": "Other"
+      },
+      {
+        "item": "Heavy cream",
+        "amount": "250 ml",
+        "category": "Dairy"
+      },
+      {
+        "item": "Butter",
+        "amount": "150 g, melted",
+        "category": "Dairy"
+      },
+      {
+        "item": "Plain yogurt",
+        "amount": "150 g",
+        "category": "Dairy"
+      },
+      {
+        "item": "Neutral oil",
+        "amount": "1 tbsp, for greasing",
+        "category": "Other"
+      }
+    ],
+    "instructions": [
+      {
+        "step": 1,
+        "title": "Prepare the batter",
+        "instruction": "Whisk the flour, water, and salt in a large bowl until a smooth, pourable batter forms. Let it rest for 15 minutes so the flour hydrates.",
+        "tip": "The batter should be thinner than typical American pancake batter so it spreads easily into thin layers."
+      },
+      {
+        "step": 2,
+        "title": "Prepare the cream mixture",
+        "instruction": "Mix the heavy cream, plain yogurt, and melted butter in a separate bowl until combined. Keep the mixture nearby for brushing between layers.",
+        "tip": "If the butter begins to solidify, gently warm the mixture until it is easy to brush."
+      },
+      {
+        "step": 3,
+        "title": "Heat the oven and prepare the pan",
+        "instruction": "Preheat the oven to 220°C. Lightly grease a wide, shallow oven-safe baking pan with neutral oil.",
+        "tip": "A wide pan makes it easier to create thin layers and helps the dish cook more evenly."
+      },
+      {
+        "step": 4,
+        "title": "Bake the first layer",
+        "instruction": "Pour a thin layer of batter into the pan and tilt the pan to spread it evenly. Bake until the surface is set and lightly golden, about 5–8 minutes.",
+        "tip": "Watch the first layer closely because oven temperatures and pan sizes affect the cooking time."
+      },
+      {
+        "step": 5,
+        "title": "Add and bake the remaining layers",
+        "instruction": "Pour another thin layer of batter over the baked layer, spreading it gently. Bake until set, then brush lightly with the cream and butter mixture. Repeat the process, alternating batter layers with thin coatings of the cream mixture, until the batter is used up.",
+        "tip": "Traditional flija is often cooked layer by layer under a special covered baking dome. In a home oven, thin layers and patient baking help approximate the traditional texture."
+      },
+      {
+        "step": 6,
+        "title": "Brown and rest the flija",
+        "instruction": "Bake the final layer until golden and cooked through. If needed, briefly use the oven's top heat to brown the surface, watching carefully to prevent burning. Let the flija rest for 10 minutes before cutting into portions.",
+        "tip": "Resting helps the layers settle and makes the flija easier to serve."
+      },
+      {
+        "step": 7,
+        "title": "Serve",
+        "instruction": "Cut the flija into wedges or squares and serve warm. It can be enjoyed on its own or alongside yogurt, cheese, or a fresh salad.",
+        "tip": "Serve shortly after resting for the best contrast between the tender layers and the lightly browned top."
+      }
+    ],
+    "imageUrl": "https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=600&auto=format&fit=crop&q=60",
+    "isPublic": true,
+    "prepTime": 25,
+    "cookTime": 75,
+    "servings": 6,
+    "nutrition": {
+      "fat": "25g",
+      "carbs": "58g",
+      "protein": "10g",
+      "calories": "490"
+    },
+    "tips": [
+      "Keep each batter layer thin so the flija cooks evenly.",
+      "Brush the cream mixture sparingly between layers to prevent the dish from becoming greasy.",
+      "For a more traditional result, cook the layers gradually rather than pouring all the batter in at once."
+    ],
+    "substitutions": [
+      {
+        "original": "Heavy cream",
+        "alternatives": [
+          "Cooking cream"
+        ]
+      },
+      {
+        "original": "Plain yogurt",
+        "alternatives": [
+          "Sour cream"
+        ]
+      },
+      {
+        "original": "Butter",
+        "alternatives": [
+          "Margarine"
+        ]
+      }
+    ]
+  }
+]
