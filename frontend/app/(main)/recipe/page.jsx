@@ -23,6 +23,7 @@ function RecipeContent() {
   const [recipe, setRecipe] = useState(null);
   const [recipeId, setRecipeId] = useState(null);
   const [isSaved, setIsSaved] = useState(false);
+  const [imageError, setImageError] = useState(false);
 
   // Fetch or generate the recipe data using the recipe name
   const {
@@ -205,7 +206,7 @@ function RecipeContent() {
           </Link>
 
           <div className="bg-white p-8 md:p-10 border-2 border-stone-200 mb-6">
-            {recipe.imageUrl && (
+            {recipe.imageUrl && !imageError && (
               <div className="relative w-full h-72 overflow-hidden mb-7">
                 <Image
                   src={recipe.imageUrl}
@@ -214,6 +215,7 @@ function RecipeContent() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1200px"
                   priority
+                  onError={() => setImageError(true)}
                 />
               </div>
             )}
